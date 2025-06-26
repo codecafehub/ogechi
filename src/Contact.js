@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { Mail, Send, User, MessageSquare } from 'lucide-react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -18,21 +21,47 @@ const Contact = () => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
-    alert('Thank you for your message! I\'ll get back to you soon.');
+  e.preventDefault();
+  setIsSubmitting(true);
+
+  const scriptURL = "https://script.google.com/macros/s/AKfycbxJXzNSfGc13lJ9HMnH0hTYeSW7VQ_VxusU7mEOEfZKwZ6qmVxAQJPZAN7Buwl_eYvA/exec";
+
+  try {
+    await fetch(scriptURL, {
+      method: "POST",
+      mode: "no-cors",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    });
+
+    toast.success("Thank you for your message! I'll get back to you soon.", {
+      position: "top-right",
+      autoClose: 5000,
+    });
+
     setFormData({ name: '', email: '', message: '' });
-    setIsSubmitting(false);
     setShowForm(false);
-  };
+  } catch (error) {
+    console.error("Error submitting form:", error);
+
+    toast.error("There was an error sending your message. Please try again later.", {
+      position: "top-right",
+      autoClose: 5000,
+    });
+  }
+
+  setIsSubmitting(false);
+};
+
+
+
 
   return (
     <section id="contact" className="relative py-20 px-4 overflow-hidden min-h-screen flex items-center">
       {/* Animated Background */}
+      <ToastContainer />
       <div className="absolute inset-0 bg-black">
         {/* Floating particles */}
         {[...Array(30)].map((_, i) => (
@@ -59,7 +88,7 @@ const Contact = () => {
 
       <div className="relative z-10 max-w-6xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-5xl md:text-6xl font-bold mb-8 bg-gradient-to-r from-purple-400 via-pink-400 to-purple-400 bg-clip-text text-transparent animate-pulse">
+          <h2 className="text-5xl md:text-6xl font-bold mb-8 bg-gradient-to-r from-purple-400 to-blue-500 bg-clip-text text-transparent animate-pulse">
             Let's Work Together
           </h2>
           <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
@@ -102,7 +131,9 @@ const Contact = () => {
           {/* Contact Form */}
           <div className={`transition-all duration-700 transform ${showForm ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8 pointer-events-none'}`}>
             <div className="bg-gray-900/80 backdrop-blur-lg rounded-2xl p-8 border border-gray-700/50 shadow-2xl hover:shadow-purple-500/10 transition-all duration-500">
-              <div className="space-y-6">
+            
+
+              <form className="space-y-6" onSubmit={handleSubmit}>
                 <div className="space-y-4">
                   <div className="group">
                     <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2 group-focus-within:text-purple-400 transition-colors duration-300">
@@ -170,7 +201,8 @@ const Contact = () => {
                     </>
                   )}
                 </button>
-              </div>
+              </form>
+
             </div>
           </div>
         </div>
