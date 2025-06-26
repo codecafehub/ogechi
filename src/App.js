@@ -7,6 +7,7 @@ import About from './About';
 import Project from './Project';
 import Skills from './Skills';
 import Contact from './Contact';
+import Services from './Services';
 
 const App = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -197,6 +198,8 @@ const App = () => {
 
       {/* About Section */}
      <About />
+
+     <Services />
 
       {/* Projects Section */}
       <Project />
