@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/ogechi/static/css/main.17f66dd3.css",
-    "main.js": "/ogechi/static/js/main.f16197a5.js",
+    "main.css": "/ogechi/static/css/main.8e7a85a5.css",
+    "main.js": "/ogechi/static/js/main.add9bb71.js",
     "static/js/453.c3602977.chunk.js": "/ogechi/static/js/453.c3602977.chunk.js",
     "static/media/skills-wheel.png": "/ogechi/static/media/skills-wheel.d1d8bcbad1391819380c.png",
     "static/media/hero-illustration.png": "/ogechi/static/media/hero-illustration.1b69064addb4fa14d785.png",
     "index.html": "/ogechi/index.html",
-    "main.17f66dd3.css.map": "/ogechi/static/css/main.17f66dd3.css.map",
-    "main.f16197a5.js.map": "/ogechi/static/js/main.f16197a5.js.map",
+    "main.8e7a85a5.css.map": "/ogechi/static/css/main.8e7a85a5.css.map",
+    "main.add9bb71.js.map": "/ogechi/static/js/main.add9bb71.js.map",
     "453.c3602977.chunk.js.map": "/ogechi/static/js/453.c3602977.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.17f66dd3.css",
-    "static/js/main.f16197a5.js"
+    "static/css/main.8e7a85a5.css",
+    "static/js/main.add9bb71.js"
   ]
 }
